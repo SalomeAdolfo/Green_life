@@ -15,14 +15,11 @@ const HomeStackScreen = () => {
           fontFamily: 'Arial',
           fontWeight: 'bold'
         },
+        headerShown: false, //Sirve para ocultar el nombre del header
       }
     }>
-      <HomeStack.Screen name="Green Life" component={HomeScreen1} options={{
-        contentStyle:{
-          alignItems : 'center',
-          justifyContent: 'center'
-        },
-      }}/>
+      <HomeStack.Screen name="Green Life" component={HomeScreen1} options={{}
+      }/>
     </HomeStack.Navigator>
   );
 };
