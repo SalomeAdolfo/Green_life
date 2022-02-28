@@ -5,6 +5,7 @@ import HomeStackScreen from './src/stacks/HomeStackScreen';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import SettingsStackScreen from './src/stacks/SettingsStackScreen';
 import  Icon  from 'react-native-vector-icons/FontAwesome';
+import LoginStack from './src/stacks/LoginStackScreen';
 
 
 function HomeScreen() {
@@ -53,7 +54,7 @@ export default function App() {
             <Icon name='shopping-bag' size={25} color='black' style={{color: focused ? '#88F109' : '#EB1F4F'}}/>
           ),
         }}/>
-        <Tab.Screen name='User' component={HomeScreen} options={{
+        <Tab.Screen name='User' component={LoginStack} options={{
           tabBarIcon: ({focused}) => (
             <Icon name='user' size={25} style={{color: focused ? '#88F109' : '#EB1F4F'}}/>
           ),
