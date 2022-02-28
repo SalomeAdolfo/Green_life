@@ -12,7 +12,7 @@ const HomeScreen = () => {
       </View>
       <View
         style={{
-          marginVertical: 300,
+          marginVertical: 380,
           flexDirection: 'row',
           height: 65,
           position: 'absolute',
@@ -24,13 +24,11 @@ const HomeScreen = () => {
             title="Offers"
             type="solid"
             buttonStyle={{
-              ...styles.botones
+              ...styles.botones,
             }}
-            titleStyle={
-              {
-               ...styles.botones_texto
-              }
-            }
+            titleStyle={{
+              ...styles.botones_texto,
+            }}
           />
         </View>
         <View style={{width: '50%', paddingHorizontal: 10}}>
@@ -38,20 +36,18 @@ const HomeScreen = () => {
             title="News"
             type="solid"
             buttonStyle={{
-             ...styles.botones
+              ...styles.botones,
             }}
-            titleStyle={
-              {
-               ...styles.botones_texto
-              }
-            }
+            titleStyle={{
+              ...styles.botones_texto,
+            }}
           />
         </View>
       </View>
       <View
         style={{
           height: 65,
-          marginVertical: 380,
+          marginVertical: 480,
           position: 'absolute',
           left: 20,
           right: 20,
@@ -62,11 +58,9 @@ const HomeScreen = () => {
           buttonStyle={{
             ...styles.botones,
           }}
-          titleStyle={
-            {
-             ...styles.botones_texto
-            }
-          }
+          titleStyle={{
+            ...styles.botones_texto,
+          }}
         />
       </View>
     </View>
@@ -77,15 +71,15 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 70,
     borderRadius: 20,
-    backgroundColor: '#26de81'
+    backgroundColor: '#26de81',
   },
-  botones_texto:{
+  botones_texto: {
     color: 'white',
     fontFamily: 'Arial',
     fontSize: 25,
     fontWeight: 'bold',
-    fontStyle: 'normal'
-  }
+    fontStyle: 'normal',
+  },
 });
 
 export default HomeScreen;

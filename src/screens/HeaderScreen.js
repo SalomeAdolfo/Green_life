@@ -24,15 +24,17 @@ const HeaderScreen = () => {
           />
         </View>
         <View style={{left: '85%', top: -180}}>
-        <Icon
-          name="info-circle"
-          size={30}
-          style={{color: 'black'}}></Icon>
-          </View>
+          <Icon name="info-circle" size={30} style={{color: 'black'}}></Icon>
+        </View>
         <View>
           <Image
             source={require('../../assets/img/logo_negro.png')}
-            style={{width: 200, height: 200, marginVertical: -220, marginHorizontal: 95}}
+            style={{
+              width: 200,
+              height: 200,
+              marginVertical: -210,
+              marginHorizontal: 105,
+            }}
           />
         </View>
       </View>
