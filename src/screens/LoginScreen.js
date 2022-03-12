@@ -4,8 +4,10 @@ import HeaderScreen from './HeaderScreen';
 import {Card, Button, colors} from 'react-native-elements';
 import {Fumi} from 'react-native-textinput-effects';
 import Icons from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <View style={{marginVertical: 30}}>
@@ -66,7 +68,8 @@ const LoginScreen = () => {
               alignSelf: 'center',
               borderWidth: 1.5,
             }} 
-            titleStyle={{color: "#04B404", fontSize:18 }}/>
+            titleStyle={{color: "#04B404", fontSize:18 }}
+            onPress={()=>navigation.navigate("Home")}/>
             </View>
           </View>
         </Card>
