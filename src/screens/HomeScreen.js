@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import React from 'react';
 import HeaderScreen from './HeaderScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -7,7 +7,7 @@ import {Button} from 'react-native-elements';
 const HomeScreen = () => {
   return (
     <View>
-      <View style={{flex: 1, marginVertical: 70}}>
+      <View style={{marginVertical: 30}}>
         <HeaderScreen />
       </View>
       <View

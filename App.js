@@ -3,7 +3,7 @@ import { Text, View ,Image, TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeStackScreen from './src/stacks/HomeStackScreen';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import SettingsStackScreen from './src/stacks/SettingsStackScreen';
+import SettingsStackScreen from './src/stacks/RankigStackScreen';
 import  Icon  from 'react-native-vector-icons/FontAwesome';
 import LoginStack from './src/stacks/LoginStackScreen';
 
@@ -15,15 +15,6 @@ function HomeScreen() {
     </View>
   );
 }
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
-
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {

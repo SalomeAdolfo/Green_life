@@ -9,11 +9,11 @@ import { useNavigation } from '@react-navigation/native';
 const LoginScreen = () => {
   const navigation = useNavigation();
   return (
-    <ScrollView>
+    <ScrollView style={{flex:1}}>
       <View style={{marginVertical: 30}}>
         <HeaderScreen />
       </View>
-      <View style={{marginVertical: -140, height: 550}}>
+      <View style={{marginVertical: -140, height: 550, alignSelf: 'center', width: '100%'}}>
         <Card
           containerStyle={{
             height: 360,
