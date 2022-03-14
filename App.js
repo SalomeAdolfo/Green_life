@@ -3,11 +3,11 @@ import { Text, View ,Image, TouchableOpacity} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeStackScreen from './src/stacks/HomeStackScreen';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import SettingsStackScreen from './src/stacks/RankigStackScreen';
+import RankingStackScreen from './src/stacks/RankigStackScreen';
 import  Icon  from 'react-native-vector-icons/FontAwesome';
 import LoginStack from './src/stacks/LoginStackScreen';
 import MarketStackScreen from './src/stacks/MarketStackScreen';
-
+import SettingsStackScreen from './src/stacks/SettingsStackScreen';
 
 function HomeScreen() {
   return (
@@ -36,7 +36,7 @@ export default function App() {
               <Icon name="home" size={25} style={{color: focused ? '#88F109' : '#EB1F4F'}}  />
           ),  
         }}/>
-        <Tab.Screen name="Ranking" component={SettingsStackScreen} options={{
+        <Tab.Screen name="Ranking" component={RankingStackScreen} options={{
           tabBarIcon: ({focused}) =>(
             <Icon name='bar-chart-o' size={25} style={{color: focused ? '#88F109' : '#EB1F4F'}}/>
           ),
@@ -51,7 +51,7 @@ export default function App() {
             <Icon name='user' size={25} style={{color: focused ? '#88F109' : '#EB1F4F'}}/>
           ),
         }}/>
-        <Tab.Screen name='Settings' component={HomeScreen} options={{
+        <Tab.Screen name='Settings' component={SettingsStackScreen} options={{
           tabBarIcon: ({focused}) => (
             <Icon name='gear' size={25} style={{color: focused ? '#88F109' : '#EB1F4F'}} />
           ),
