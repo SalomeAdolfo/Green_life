@@ -6,6 +6,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import SettingsStackScreen from './src/stacks/RankigStackScreen';
 import  Icon  from 'react-native-vector-icons/FontAwesome';
 import LoginStack from './src/stacks/LoginStackScreen';
+import MarketStackScreen from './src/stacks/MarketStackScreen';
 
 
 function HomeScreen() {
@@ -40,7 +41,7 @@ export default function App() {
             <Icon name='bar-chart-o' size={25} style={{color: focused ? '#88F109' : '#EB1F4F'}}/>
           ),
         }} />
-        <Tab.Screen name='Buy' component={HomeScreen} options={{
+        <Tab.Screen name='Buy' component={MarketStackScreen} options={{
           tabBarIcon: ({focused}) => (
             <Icon name='shopping-bag' size={25} color='black' style={{color: focused ? '#88F109' : '#EB1F4F'}}/>
           ),
