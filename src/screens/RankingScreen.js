@@ -7,7 +7,7 @@ import {Card, Avatar, AirbnbRating, Divider} from 'react-native-elements';
 const RankingScreen = () => {
   return (
     <ScrollView style={{marginVertical:10 ,flex: 1, bottom:100}}>
-      <View style={{marginVertical: 110, height: 135}}>
+      <View style={{marginVertical: 89}}>
         <HeaderScreen />
       </View>
       <View

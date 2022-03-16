@@ -4,23 +4,21 @@ import HeaderScreen from './HeaderScreen';
 import {Card, Button, colors} from 'react-native-elements';
 import {Fumi} from 'react-native-textinput-effects';
 import Icons from 'react-native-vector-icons/FontAwesome';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
   return (
-    <ScrollView style={{flex:1}}>
-      <View style={{marginVertical: 30}}>
+    <View style={{flexDirection:'column', justifyContent: 'center'}}>
+      <View>
         <HeaderScreen />
       </View>
-      <View style={{marginVertical: -140, height: 550, alignSelf: 'center', width: '100%'}}>
+
+      <View style={{alignSelf: 'center', justifyContent: 'center'}}>
         <Card
           containerStyle={{
-            height: 360,
-            position: 'absolute',
-            left: 5,
-            right: 5,
-            elevation: 10,
+            width: 300,
+            elevation: 5,
             borderRadius: 20,
             shadowColor: '#00FF40',
           }}>
@@ -55,26 +53,32 @@ const LoginScreen = () => {
               secureTextEntry={true}
               style={{}}
             />
-            <Button type='clear' title="Not yet a member? Sign Up" titleStyle={{fontSize: 14}} buttonStyle={{left: '150%'}}
+            <Button
+              type="clear"
+              title="Not yet a member? Sign Up"
+              titleStyle={{fontSize: 14}}
+              buttonStyle={{left: '100%'}}
             />
             <View style={{marginVertical: 20}}>
-            <Button type="outline"
-            title="Submit"
-            buttonStyle={{
-              borderRadius: 15,
-              borderColor: '#D7DF01',
-              flexDirection: 'row',
-              width: '80%',
-              alignSelf: 'center',
-              borderWidth: 1.5,
-            }} 
-            titleStyle={{color: "#04B404", fontSize:18 }}
-            onPress={()=>navigation.navigate("Home")}/>
+              <Button
+                type="outline"
+                title="Submit"
+                buttonStyle={{
+                  borderRadius: 15,
+                  borderColor: '#D7DF01',
+                  flexDirection: 'row',
+                  width: '80%',
+                  alignSelf: 'center',
+                  borderWidth: 1,
+                }}
+                titleStyle={{color: '#04B404', fontSize: 18}}
+                onPress={() => navigation.navigate('Home')}
+              />
             </View>
           </View>
         </Card>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
