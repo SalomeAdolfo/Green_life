@@ -1,38 +1,11 @@
-import {View, StyleSheet, FlatList, Text, ScrollView, SafeAreaView} from 'react-native';
-import React from 'react';
+import {View, StyleSheet, FlatList, Text} from 'react-native';
+import React, {useEffect,useState} from 'react';
 import HeaderScreen from './HeaderScreen';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import axios from 'axios';
 import {Button, Card} from 'react-native-elements';
 
-const data = [
-  {
-    titulo: 'Lechuga',
-    imagen:
-      'https://th.bing.com/th/id/OIP.f5Gn3smjpbYTmNtYjEHnmQHaHa?pid=ImgDet&rs=1',
-    descripcion: 'Lechuga romana 1',
-  },
-  {
-    titulo: 'Lechuga',
-    imagen:
-      'https://th.bing.com/th/id/OIP.f5Gn3smjpbYTmNtYjEHnmQHaHa?pid=ImgDet&rs=1',
-    descripcion: 'Lechuga romana 2',
-  },
-  {
-    titulo: 'Lechuga',
-    imagen:
-      'https://th.bing.com/th/id/OIP.f5Gn3smjpbYTmNtYjEHnmQHaHa?pid=ImgDet&rs=1',
-    descripcion: 'Lechuga romana 3',
-  },
-  {
-    titulo: 'Lechuga',
-    imagen:
-      'https://th.bing.com/th/id/OIP.f5Gn3smjpbYTmNtYjEHnmQHaHa?pid=ImgDet&rs=1',
-    descripcion: 'Lechuga romana 4',
-  },
-];
-
 const Item = ({titulo, imagen, descripcion}) => (
-  <View style={{height: 300}}>
+  <View style={{height: 400}}>
     <Card containerStyle={{...styles.Cards}}>
       <Card.Title>{titulo}</Card.Title>
       <Card.Image source={{uri: imagen}}></Card.Image>
@@ -49,6 +22,25 @@ const HomeScreen = () => {
       descripcion={item.descripcion}
     />
   );
+
+    const [isLoading, setLoading] = useState(true);
+    const [info, setInfo] = useState([]);
+
+    const getProductos = async () =>{
+      try{
+        const response = await fetch('https://c169-170-247-188-25.ngrok.io/api/productos');
+        const json = await response.json();
+        setInfo(json.data);
+        console.log(json.data);
+      }catch(error){
+        console.error(error);
+      }finally{
+        setLoading(false);
+      }
+    }
+    useEffect(()=>{
+      getProductos();
+    },[]);
   return (
     <View>
       <View>
@@ -56,10 +48,21 @@ const HomeScreen = () => {
       </View>
       <FlatList
         style={{marginVertical: '20%'}}
-        data={data}
+        data={info}
         renderItem={renderItem}
-        keyExtractor={item => item.descripcion}
+        keyExtractor={({id},index)=>id}
         horizontal
+      />
+      <FlatList 
+        data={info}
+        renderItem={({item})=>(
+          <View>
+          <Card containerStyle={{width: 200, height:200}}>
+            <Card.Title>{item.categoria}</Card.Title>
+          </Card>
+          </View>
+        )}
+        keyExtractor={({ id }, index) => id}
       />
     </View>
   );

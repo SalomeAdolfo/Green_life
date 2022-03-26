@@ -1,15 +1,53 @@
-import {View, Text, ScrollView} from 'react-native';
-import React from 'react';
+import {View} from 'react-native';
+import React, {useState} from 'react';
 import HeaderScreen from './HeaderScreen';
 import {Card, Button, colors} from 'react-native-elements';
 import {Fumi} from 'react-native-textinput-effects';
 import Icons from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 
 const LoginScreen = () => {
+  const [settoken] = useState('');
+
+  const token = async (email1, contraseña) => {
+
+    try {
+      const res = await fetch('https://c169-170-247-188-25.ngrok.io/api/sanctum/token',
+        {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email : email1,
+            password: contraseña
+          }),
+        },
+      )
+      .then(response => 
+        
+        {
+          if(response.status==200){
+            alert('Bienvenido')
+          }else{
+            alert('algo salió mal')
+          }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+}
+  const [name, setname] = useState('');
+  const [password, setpass] = useState('');
+  console.log(password);
   const navigation = useNavigation();
   return (
-    <View style={{flexDirection:'column', justifyContent: 'center'}}>
+    <View style={{flexDirection: 'column', justifyContent: 'center'}}>
       <View>
         <HeaderScreen />
       </View>
@@ -40,7 +78,8 @@ const LoginScreen = () => {
               iconSize={30}
               iconWidth={50}
               inputPadding={18}
-              style={{}}
+              onChangeText={text => setname(text)}
+              value={name}
             />
             <Fumi
               label={'Password'}
@@ -51,7 +90,8 @@ const LoginScreen = () => {
               iconWidth={50}
               inputPadding={18}
               secureTextEntry={true}
-              style={{}}
+              onChangeText={pass => setpass(pass)}
+              value={password}
             />
             <Button
               type="clear"
@@ -72,7 +112,7 @@ const LoginScreen = () => {
                   borderWidth: 1,
                 }}
                 titleStyle={{color: '#04B404', fontSize: 18}}
-                onPress={() => navigation.navigate('Home')}
+                onPress={() => token(name,password)}
               />
             </View>
           </View>
