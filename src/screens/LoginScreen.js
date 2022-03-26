@@ -5,43 +5,52 @@ import {Card, Button, colors} from 'react-native-elements';
 import {Fumi} from 'react-native-textinput-effects';
 import Icons from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
 const LoginScreen = () => {
   const [settoken] = useState('');
 
-  const token = async (email1, contraseña) => {
+  const token = async (email1, contrasena) => {
 
     try {
-      const res = await fetch('https://c169-170-247-188-25.ngrok.io/api/sanctum/token',
+      const res = await fetch('https://d037-170-247-188-25.ngrok.io/api/sanctum/token',
         {
           method: 'POST',
           headers: {
-            Accept: 'application/json',
+            'Accept': 'application/json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            email : email1,
-            password: contraseña
+            'email' : email1,
+            'password': contrasena
           }),
         },
       )
+      .then(res => res.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => {console.log('Success:', response['token'])
+    return response['token']});
+      /*
       .then(response => 
         
         {
-          if(response.status==200){
+          if(response.status==200){ß
             alert('Bienvenido')
+            console.log(response)
           }else{
             alert('algo salió mal')
           }
       });
+      */
     } catch (error) {
       console.log(error);
     }
 
 }
+
+
+
   const [name, setname] = useState('');
   const [password, setpass] = useState('');
   console.log(password);
