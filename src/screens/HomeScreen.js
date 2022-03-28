@@ -28,7 +28,7 @@ const HomeScreen = () => {
 
     const getProductos = async () =>{
       try{
-        const response = await fetch('https://c169-170-247-188-25.ngrok.io/api/productos');
+        const response = await fetch('https://d037-170-247-188-25.ngrok.io/api/productos');
         const json = await response.json();
         setInfo(json.data);
         console.log(json.data);

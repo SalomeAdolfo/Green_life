@@ -6,50 +6,35 @@ import {Fumi} from 'react-native-textinput-effects';
 import Icons from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
 
-
-
 const LoginScreen = () => {
   const [settoken] = useState('');
 
   const token = async (email1, contrasena) => {
-
     try {
-      const res = await fetch('https://d037-170-247-188-25.ngrok.io/api/sanctum/token',
+      const res = await fetch(
+        'https://d037-170-247-188-25.ngrok.io/api/sanctum/token',
         {
           method: 'POST',
           headers: {
-            'Accept': 'application/json',
+            Accept: 'application/json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            'email' : email1,
-            'password': contrasena
+            email: email1,
+            password: contrasena,
           }),
         },
       )
-      .then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => {console.log('Success:', response['token'])
-    return response['token']});
-      /*
-      .then(response => 
-        
-        {
-          if(response.status==200){ß
-            alert('Bienvenido')
-            console.log(response)
-          }else{
-            alert('algo salió mal')
-          }
-      });
-      */
+        .then(res => res.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => {
+          console.log('Success:', response['token']);
+          return response['token'];
+        });
     } catch (error) {
       console.log(error);
     }
-
-}
-
-
+  };
 
   const [name, setname] = useState('');
   const [password, setpass] = useState('');
@@ -121,7 +106,7 @@ const LoginScreen = () => {
                   borderWidth: 1,
                 }}
                 titleStyle={{color: '#04B404', fontSize: 18}}
-                onPress={() => token(name,password)}
+                onPress={() => token(name, password)}
               />
             </View>
           </View>
