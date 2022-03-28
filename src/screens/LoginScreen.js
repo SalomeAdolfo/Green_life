@@ -5,6 +5,10 @@ import {Card, Button, colors} from 'react-native-elements';
 import {Fumi} from 'react-native-textinput-effects';
 import Icons from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
+import baseURL from '../../routes/api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const url = '/api/sanctum/token'
 
 const LoginScreen = () => {
   const [settoken] = useState('');
@@ -12,7 +16,7 @@ const LoginScreen = () => {
   const token = async (email1, contrasena) => {
     try {
       const res = await fetch(
-        'https://d037-170-247-188-25.ngrok.io/api/sanctum/token',
+        baseURL+url,
         {
           method: 'POST',
           headers: {
@@ -29,19 +33,46 @@ const LoginScreen = () => {
         .catch(error => console.error('Error:', error))
         .then(response => {
           console.log('Success:', response['token']);
-          return response['token'];
+          return response['token'],
+          saveData(response['token'])
         });
     } catch (error) {
       console.log(error);
     }
-  };
+  }
+
+  const saveData = async(token)=>{
+    try{
+      AsyncStorage.setItem(
+        'token',
+        JSON.stringify({
+          token: token
+        })
+      );
+      console.log("hecho")
+    }catch(error){
+      console.log(error)
+    }
+  }
+
+  const getToken = async () =>{
+    try{
+      const jsonValue = await AsyncStorage.getItem('token')
+      return jsonValue != null ? JSON.parse(jsonValue): null
+    }catch(e){
+      console.log(e)
+    }
+  }
 
   const [name, setname] = useState('');
   const [password, setpass] = useState('');
   console.log(password);
   const navigation = useNavigation();
   return (
+    
     <View style={{flexDirection: 'column', justifyContent: 'center'}}>
+      {AsyncStorage.getItem('token') !=null && console.log("todo ok")}
+      {AsyncStorage.getItem('token') ==null && console.log("todo mal")}
       <View>
         <HeaderScreen />
       </View>

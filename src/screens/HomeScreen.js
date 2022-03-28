@@ -3,7 +3,9 @@ import React, {useEffect,useState} from 'react';
 import HeaderScreen from './HeaderScreen';
 import axios from 'axios';
 import {Button, Card} from 'react-native-elements';
+import baseURL from '../../routes/api';
 
+const url = '/api/productos'
 const Item = ({titulo, imagen, descripcion}) => (
   <View style={{height: 400}}>
     <Card containerStyle={{...styles.Cards}}>
@@ -28,7 +30,7 @@ const HomeScreen = () => {
 
     const getProductos = async () =>{
       try{
-        const response = await fetch('https://d037-170-247-188-25.ngrok.io/api/productos');
+        const response = await fetch(baseURL+url);
         const json = await response.json();
         setInfo(json.data);
         console.log(json.data);
